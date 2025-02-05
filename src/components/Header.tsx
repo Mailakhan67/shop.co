@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 import Link from "next/link";
 // import { RiArrowDropDownLine } from "react-icons/ri";
 // import { MdOutlineAccountCircle } from "react-icons/md";
@@ -7,12 +7,12 @@ import { IoIosSearch } from "react-icons/io";
 import { MobileMenuSheet } from "./MobileMenuSheet";
 import { ShopNavigation } from "./ShopNavigation";
 import DiscountAlert from "./DiscountAlert";
-// import { useSelector } from "react-redux";
+ import { useSelector } from "react-redux";
 
 // import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
-  // const cart =  useSelector((state:any)=>state.cart)
+   const cart =  useSelector((state:any)=>state.cart)
 
   return (
     <>
@@ -41,13 +41,13 @@ export default function Header() {
 
             <div className="flex space-x-2 sm:space-x-4 items-center">
             {/* <IoIosSearch className="text-4xl  lg:hidden" /> */}
-            {/* <Link href={"/cart"} className="relative"> */}
+            <Link href={"/cart"} className="relative">
             <IoCartOutline className="text-4xl "/>
-            {/* {cart.length > 0 && (
+            {cart.length > 0 && (
                 <span className="absolute top-[-5px] bg-red-400  rounded-full text-white w-[20px] h-[20px] flex justify-center items-center p-1 text-sm right-0">{cart.length}</span>
              )
 
-             }            </Link> */}
+             }            </Link>
             {/* <MdOutlineAccountCircle className="text-4xl "/> */}
             {/* <SignedOut>
             <SignInButton>

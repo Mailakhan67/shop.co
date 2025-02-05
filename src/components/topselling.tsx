@@ -1,5 +1,12 @@
 "use client"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
  
 import { client } from '@/sanity/lib/client'
 import { urlFor } from "@/sanity/lib/image"
@@ -7,7 +14,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React, { useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
-
+import { Button } from "./ui/button"
 // Star icons array
 const star = [
   <FaStar key={1} />,
@@ -28,7 +35,7 @@ interface Iproducts {
 }
 
 
- function TopSelling() {
+ function TopSellingProduct() {
   const [products, setProducts] = useState<Iproducts[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +47,7 @@ interface Iproducts {
         setLoading(true);
         setError(null);
         const fetchedProducts: Iproducts[] = await client.fetch(
-         `*[_type == 'products']{
+          `*[_type == 'products' && category == 'tshirt']{
             "imageUrl": image.asset->url,
             category,
             discountPercent,
@@ -80,14 +87,13 @@ interface Iproducts {
     );
   }
 
-
   return (
     <div className="w-full mt-20 md:mt-36 h-full  max-w-screen-xl mx-auto">
-    <h1 className="text-3xl md:text-4xl font-bold text-center">TOP SELLING</h1>
+    <h1 className="text-3xl md:text-4xl font-bold text-center">You might also like</h1>
     <div className="relative mt-10 overflow-x-auto flex space-x-5 px-8">
       {products.map((data) => (
         <div key={data._id} className="flex-shrink-0">
-          <Link href={`/products/${data._id}`}>
+          <Link href={`/product/${data._id}`}>
             <div className="w-[200px] md:w-[283px] h-[200px] md:h-[290px] bg-[#F0EEED] rounded-[20px]">
               {data.imageUrl ? (
                 <Image
@@ -123,18 +129,8 @@ interface Iproducts {
         </div>
       ))}
     </div>
-    <div className="flex justify-center items-start mt-5">
-      <Link href="/casual">
-        <Button
-          variant={"outline"}
-          className="sm:mt-0 w-[80%] sm:w-[200px] rounded-[20px]"
-        >
-          View all
-        </Button>
-      </Link>
-    </div>
   </div>
   ) 
 }
 
-export default TopSelling;
+export default TopSellingProduct

@@ -7,12 +7,15 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { useParams } from "next/navigation";
 //import { Button } from "@/components/ui/button";
-//import { useDispatch } from "react-redux";
-// import CustomerTestimonials from "@/components/AllReviews";
+import { useDispatch } from "react-redux";
+import { add } from "@/app/Redux/features/cartSlice"
+ import ReviewsOfCustomers from "@/components/reviewsOfCustomers";
+
 // import Top_sell from "@/components/arrivals";
 // import { BreadcrumbCollapsed } from "@/components/Breadcrupm";
 // import { useDispatch } from "react-redux";
-// import Toastify from "@/app/cart/toastify";
+ import Toastify from "@/app/cart/toastify";
+import TopSellingProduct from "@/components/topselling";
 
 
 // Adding key prop in star array
@@ -39,8 +42,8 @@ interface Iproducts {
 
   export default function SlugPage() {
 
-    const params = useParams(); // 🔥 Next.js ka useParams() hook
-    const { id } = params; // Ab aap id ko direct access kar sakte hain
+    const params = useParams(); 
+    const { id } = params; 
     console.log("Product ID:", id);
 
 
@@ -48,9 +51,12 @@ interface Iproducts {
     const [cartItem, setCartItem] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-   //  const dispatch = useDispatch()
+     const dispatch = useDispatch()
      
-    
+     const handleadd = (cartItem:any)=>{
+      dispatch(add(cartItem))
+    }
+
     useEffect(() => {
         const fetchProduct = async () => {
           try {
@@ -226,17 +232,15 @@ interface Iproducts {
             >
               <Plus />
             </button>
-            {/* <Button className="bg-black text-white w-[300px]">Add to Cart</Button> */}
-            {/* <Toastify cartItem = {cartItem}/> */}
+            {/* <Button onClick={()=>handleadd(cartItem)} className="bg-black text-white w-[300px]">Add to Cart</Button> */}
+             <Toastify cartItem = {cartItem}/> 
           </div>
         </div>
       </div>
+    
     </div>
-      {/* <CustomerTestimonials/> */}
-      {/* <Top_sell/> */}
+    <ReviewsOfCustomers/> 
+       <TopSellingProduct/> 
     </>
   )
-
-
-
   }

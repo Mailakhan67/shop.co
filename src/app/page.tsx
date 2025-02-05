@@ -2,16 +2,14 @@
 import { useEffect } from 'react'
 import AllFonts from "@/components/AllFonts";
 import Hero from "@/components/Hero";
-import TopSelling from "./(pages)/products/TopSelling";
-import BestSelling from "./(pages)/products/BestSelling";
-//import CustomerReviews from "@/components/CustomerReviews";
+import TopSelling from "./(pages)/product/TopSelling";
+import BestSelling from "./(pages)/product/BestSelling";
+import CustomerReviews from "@/components/CustomerReviews";
 import BrowseDresses from "@/components/BrowseDresses";
 import AOS from 'aos'
  import "aos/dist/aos.css"
 
 export default function Home() {
-  
-
  useEffect(()=>{
     AOS.init({
       easing: "ease-out-back",
@@ -32,7 +30,7 @@ export default function Home() {
     <BestSelling/>
     <TopSelling/>
     <BrowseDresses/>
-    {/* <CustomerReviews/> */}
+    <CustomerReviews/>
   </div>
   );
 }
