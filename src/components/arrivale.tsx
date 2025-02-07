@@ -41,7 +41,7 @@ interface Iproducts {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch products with error handling
+    
     const fetchProducts = async () => {
       try {
         setLoading(true);

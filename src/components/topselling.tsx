@@ -15,6 +15,7 @@ import Link from "next/link"
 import React, { useEffect, useState } from 'react'
 import { FaStar } from "react-icons/fa";
 import { Button } from "./ui/button"
+
 // Star icons array
 const star = [
   <FaStar key={1} />,
@@ -41,7 +42,6 @@ interface Iproducts {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch products with error handling
     const fetchProducts = async () => {
       try {
         setLoading(true);

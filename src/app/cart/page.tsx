@@ -5,7 +5,6 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import Cartpage from "./cartpage";
 import { useSelector } from "react-redux";
-// import { BreadcrumbCollapsed } from "@/components/Breadcrupm";
 import Link from "next/link";
 
 const Page = () => {
@@ -28,7 +27,7 @@ const Page = () => {
   return (
        <>
        <div className=" max-w-screen-2xl   mx-auto mt-28 lg:mt-36">
-         {/* <BreadcrumbCollapsed/> */}
+  
     <div className="flex flex-col justify-center items-center relative"> 
         
     <div className="w-[95%] max-w-[1200px]  ">

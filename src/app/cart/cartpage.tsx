@@ -6,10 +6,9 @@ import Image from "next/image";
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-// import { addition, remove, subraction } from "../Redux/features/cart";
 import Link from "next/link";
 import { addition, remove, subraction } from "../Redux/features/cartSlice";
-// import { addition, delItem, subraction } from "../Redux/features/cart";
+
 
 const Cartpage = () => {
  

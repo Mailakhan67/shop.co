@@ -6,19 +6,14 @@ import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { useParams } from "next/navigation";
-//import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { add } from "@/app/Redux/features/cartSlice"
  import ReviewsOfCustomers from "@/components/reviewsOfCustomers";
-
-// import Top_sell from "@/components/arrivals";
-// import { BreadcrumbCollapsed } from "@/components/Breadcrupm";
-// import { useDispatch } from "react-redux";
  import Toastify from "@/app/cart/toastify";
 import TopSellingProduct from "@/components/topselling";
+import { BreadcrumbCollapsed } from "@/components/breadcrumb";
 
 
-// Adding key prop in star array
 const star = [
     <FaStar key={1} />,
     <FaStar key={2} />,
@@ -110,14 +105,14 @@ interface Iproducts {
 
   if (error || !product) {
     return <div className="mt-36 text-red-500 text-center font-bold">
-       {/* <BreadcrumbCollapsed/> */}
+
       Product not found</div>;
   }
 
   return(
     <>
     <div className="mt-28 md:mt-36">
-       {/* <BreadcrumbCollapsed/> */}
+       <BreadcrumbCollapsed/>
       <div className="flex h-full items-center flex-col md:flex-row justify-center sm:justify-evenly  sm:p-0 max-w-screen-2xl mx-auto">
         {/* Left */}
         <div className="flex space-x-4 md:space-x-0  md:space-y-3 p-5 md:flex-col justify-between items-center md:w-[200px]  order-2 md:order-1">
@@ -190,7 +185,7 @@ interface Iproducts {
                 <button
                   key={i}
                   onClick={() => setCartItem({ ...cartItem, color })}
-                  className="w-[37px] h-[37px] border border-black active:outline rounded-full flex justify-center items-center"
+                  className="w-[37px] h-[37px]  border border-black active:outline rounded-full flex justify-center items-center"
                   style={{ backgroundColor: color }}
                 ></button>
               ))}
@@ -204,7 +199,7 @@ interface Iproducts {
                 <button
                   key={i}
                   onClick={() => setCartItem({ ...cartItem, size })}
-                  className="w-[80px] h-[40px] flex justify-center items-center active:outline rounded-[62px] 
+                  className="w-[80px] hover:bg-black hover:text-white h-[40px] flex justify-center items-center active:outline rounded-[62px] 
                   bg-[#F0F0F0] text-gray-400"
                 >
                   {size}
@@ -212,7 +207,7 @@ interface Iproducts {
               ))}
             </div>
           </div>
-          {/* Quantity & Add to Cart */}
+          {/* Add to Cart */}
           <div className="flex justify-start items-center mt-7 space-x-4">
             <button
               onClick={() =>
@@ -232,7 +227,6 @@ interface Iproducts {
             >
               <Plus />
             </button>
-            {/* <Button onClick={()=>handleadd(cartItem)} className="bg-black text-white w-[300px]">Add to Cart</Button> */}
              <Toastify cartItem = {cartItem}/> 
           </div>
         </div>

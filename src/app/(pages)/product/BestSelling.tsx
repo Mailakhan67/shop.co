@@ -1,14 +1,5 @@
 "use client"
 import { Button } from "@/components/ui/button"
-// import { Card, CardContent } from "@/components/ui/card"
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel"
- 
 import { client } from '@/sanity/lib/client'
 import { urlFor } from "@/sanity/lib/image"
 import Image from "next/image"
@@ -42,7 +33,6 @@ interface Iproducts {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch products with error handling
     const fetchProducts = async () => {
       try {
         setLoading(true);

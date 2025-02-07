@@ -34,6 +34,7 @@ interface Iproducts {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    
     const fetchProducts = async () => {
       try {
         setLoading(true);
@@ -48,7 +49,7 @@ interface Iproducts {
             description,
             price,
             _id
-          }[0...4]`
+          }[0...20]`
         );
         setProducts(fetchedProducts);
       } catch (err: unknown) {
@@ -82,7 +83,7 @@ interface Iproducts {
 
   return (
     <div className="w-full mt-20 md:mt-36 h-full  max-w-screen-xl mx-auto">
-    <h1 className="text-3xl md:text-4xl font-bold text-center">TOP SELLING</h1>
+    <h1 className="text-3xl md:text-4xl font-bold text-center">Most Popular</h1>
     <div className="relative mt-10 overflow-x-auto flex space-x-5 px-8">
       {products.map((data) => (
         <div key={data._id} className="flex-shrink-0">

@@ -2,9 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-
 import { cn } from "@/lib/utils"
-// import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,9 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
- // navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
-//import { RiArrowDropDownLine } from "react-icons/ri"
 
 
 const components: { title: string; href: string; description: string }[] = [

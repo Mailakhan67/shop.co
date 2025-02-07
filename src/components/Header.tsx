@@ -1,7 +1,5 @@
  "use client"
 import Link from "next/link";
-// import { RiArrowDropDownLine } from "react-icons/ri";
-// import { MdOutlineAccountCircle } from "react-icons/md";
 import { IoCartOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { MobileMenuSheet } from "./MobileMenuSheet";
@@ -9,7 +7,7 @@ import { ShopNavigation } from "./ShopNavigation";
 import DiscountAlert from "./DiscountAlert";
  import { useSelector } from "react-redux";
 
-// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+ import {ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
    const cart =  useSelector((state:any)=>state.cart)
@@ -30,8 +28,8 @@ export default function Header() {
                     
                 
                     <Link href={``}><ShopNavigation/></Link>
-                    <Link href={`/product`}>On Sale</Link>
-                    <Link href={"/newarrival"}>New Arrivals</Link>
+                    <Link href={`/onsale`}>On Sale</Link>
+                    <Link href={"/arrivale"}>New Arrivals</Link>
                     <Link href={"/brands"}>Brands</Link>
                 </li>
             </ul>
@@ -40,7 +38,7 @@ export default function Header() {
              <div className="flex justify-start items-center lg:bg-[#F0F0F0] lg:w-[500px] h-[40px] pl-2 ml-12 md:ml-0 hover:border-none rounded-full "> <IoIosSearch className="text-xl " /> <input   placeholder={`Search for products...`}  className="bg-[#F0F0F0] outline-none  w-full h-full rounded-full ml-2  "/></div>
 
             <div className="flex space-x-2 sm:space-x-4 items-center">
-            {/* <IoIosSearch className="text-4xl  lg:hidden" /> */}
+          
             <Link href={"/cart"} className="relative">
             <IoCartOutline className="text-4xl "/>
             {cart.length > 0 && (
@@ -48,16 +46,17 @@ export default function Header() {
              )
 
              }            </Link>
-            {/* <MdOutlineAccountCircle className="text-4xl "/> */}
-            {/* <SignedOut>
+          
+            <ClerkProvider>
+            <SignedOut>
             <SignInButton>
-              <h1 className="text-red-500 cursor-pointer">Login/Register</h1>
+              <h1 className="text-gray-500 cursor-pointer">Login</h1>
             </SignInButton>
           </SignedOut>
           <SignedIn >
             <UserButton />
-          </SignedIn>  */}
-        
+          </SignedIn> 
+          </ClerkProvider>
           
             
             </div>
